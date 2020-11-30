@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConcussionApp.Views.Login"
+             Title="Login">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#bb0000">
+            <Label Text="You're logged in!" TextColor="#ffffff" FontAttributes="Bold"></Label>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
