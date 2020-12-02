@@ -19,16 +19,16 @@ namespace ConcussionApp
 
             
 
-            NavigateCommand = new Command<Type>(
-            async (pageType) =>
-            {
-                Page page = (Page)Activator.CreateInstance(pageType);
-                await Navigation.PushAsync(page);
-            });
+            
 
             BindingContext = this;
         }
 
-        public ICommand NavigateCommand { private set; get; }
+        
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Login());
+        }
     }
 }

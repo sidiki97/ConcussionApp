@@ -11,8 +11,7 @@
         <Label Text="Concussion Care" FontSize="Title" FontAttributes="Bold" TextColor="#bb0000" HorizontalOptions="Center" VerticalOptions="Center"></Label>
         <Entry Placeholder="Username"></Entry>
         <Entry Placeholder="Password"></Entry>
-        <Button Text="Login" TextColor="#ffffff" BackgroundColor="#bb0000" Command="{Binding NavigateCommand}"
-                CommandParameter="{x:Type local:LoginPage}" CornerRadius="5"/>
+        <Button Text="Login" TextColor="#ffffff" BackgroundColor="#bb0000" Clicked="Button_Clicked" CornerRadius="5"/>
 
     </StackLayout>
 
