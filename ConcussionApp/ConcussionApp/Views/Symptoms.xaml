@@ -6,6 +6,19 @@
     <ContentPage.Content>
         <TableView x:Name="symptom_table" Intent="Form">
             <TableRoot>
+                <TableSection Title="Name" TextColor="#bb0000">
+                    <EntryCell Placeholder="Name of Patient"></EntryCell>
+                </TableSection>
+                <TableSection Title="Date" TextColor="#bb0000">
+                    <ViewCell>
+                        <DatePicker TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Date of Birth" TextColor="#bb0000">
+                    <ViewCell>
+                        <DatePicker TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
+                    </ViewCell>
+                </TableSection>
                 <TableSection Title="Headache" TextColor="#bb0000">
                     <ViewCell>
                         <Grid>

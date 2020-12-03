@@ -27,6 +27,7 @@ namespace ConcussionApp.Views
         public Symptoms()
         {
             
+
             InitializeComponent();
         }
 
