@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ConcussionApp.Views.Symptoms"
+             Title="Symptoms Logger">
+    <ContentPage.Content>
+        <TableView x:Name="symptom_table" Intent="Form">
+            <TableRoot>
+                <TableSection Title="Headache" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Pressure in the head" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Neck Pain" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Nausea or Vomiting" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Dizziness" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+            </TableRoot>
+        </TableView>
+    </ContentPage.Content>
+</ContentPage>
