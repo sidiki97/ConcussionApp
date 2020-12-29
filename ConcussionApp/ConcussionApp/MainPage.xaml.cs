@@ -17,10 +17,6 @@ namespace ConcussionApp
             NavigationPage.SetHasNavigationBar(this, false);
             InitializeComponent();
 
-            
-
-            
-
             BindingContext = this;
         }
 
@@ -28,7 +24,7 @@ namespace ConcussionApp
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Symptoms());
+            await Navigation.PushAsync(new Options());
         }
     }
 }

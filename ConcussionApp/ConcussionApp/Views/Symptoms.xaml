@@ -2,21 +2,21 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConcussionApp.Views.Symptoms"
-             Title="Symptoms Logger">
+             Title="Patient Evalution">
     <ContentPage.Content>
         <TableView x:Name="symptom_table" Intent="Form">
             <TableRoot>
                 <TableSection Title="Name" TextColor="#bb0000">
-                    <EntryCell Placeholder="Name of Patient"></EntryCell>
-                </TableSection>
-                <TableSection Title="Date" TextColor="#bb0000">
-                    <ViewCell>
-                        <DatePicker TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
-                    </ViewCell>
+                    <EntryCell Text="{Binding Name}"  Placeholder="Name of Patient"></EntryCell>
                 </TableSection>
                 <TableSection Title="Date of Birth" TextColor="#bb0000">
                     <ViewCell>
-                        <DatePicker TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
+                        <DatePicker Date="{Binding BirthDate}" MinimumDate="01/01/1970" TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Current Date" TextColor="#bb0000">
+                    <ViewCell>
+                        <DatePicker Date="{Binding Date}" MinimumDate="12/01/2020" TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
                     </ViewCell>
                 </TableSection>
                 <TableSection Title="Headache" TextColor="#bb0000">
@@ -29,11 +29,11 @@
                             </Grid.ColumnDefinitions>
                             <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
                             <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
-                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                            <Stepper Value="{Binding HeadacheValue}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
                         </Grid>
                     </ViewCell>
                 </TableSection>
-                <TableSection Title="Pressure in the head" TextColor="#bb0000">
+                <TableSection Title="'Pressure in the head'" TextColor="#bb0000">
                     <ViewCell>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -43,7 +43,7 @@
                             </Grid.ColumnDefinitions>
                             <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
                             <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
-                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                            <Stepper Value="{Binding HeadPressureVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
                         </Grid>
                     </ViewCell>
                 </TableSection>
@@ -57,7 +57,7 @@
                             </Grid.ColumnDefinitions>
                             <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
                             <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
-                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                            <Stepper Value="{Binding NeckPainVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
                         </Grid>
                     </ViewCell>
                 </TableSection>
@@ -71,7 +71,7 @@
                             </Grid.ColumnDefinitions>
                             <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
                             <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
-                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                            <Stepper Value="{Binding NauseaVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
                         </Grid>
                     </ViewCell>
                 </TableSection>
@@ -85,11 +85,341 @@
                             </Grid.ColumnDefinitions>
                             <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
                             <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
-                            <Stepper Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                            <Stepper Value="{Binding DizzinessVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Blurred Vision" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding BlurryVisVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Balance Problems" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding BalanceVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Sensitivity to Light" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding LightSenseVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Sensitivity to Noise" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding NoiseSenseVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Feeling Slowed Down" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding SlowVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="'In a fog' Feeling" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding FogFeelVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Don't feel right" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding FeelRightVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Difficulty Concentrating" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding ConcentrateVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Difficulty Remembering" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding RememberVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Fatigue or Low Energy" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding FatigueVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Confusion" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding ConfusionVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Drowsiness" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding DrowsinessVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Trouble Falling Asleep" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding FallAsleepVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="More Emotional" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding MoreEmotionVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Irritability" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding IrritabilityVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Sadness" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding SadnessVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Nervous or Anxious" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding NervousVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Sleeping More Than Usual" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding SleepMoreVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Sleeping Less Than Usual" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding SleepLessVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Difficulty Sleeping Soundly" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding SleepSoundVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Ringing in Ears" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding RingEarVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection Title="Numbness or Tingling" TextColor="#bb0000">
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition Width="0.6*"/>
+                                <ColumnDefinition Width="2.25*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label VerticalOptions="Center" HorizontalOptions="Center" Text="None" Margin="10"/>
+                            <Label Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" Text="0" Margin="10"/>
+                            <Stepper Value="{Binding NumbnessVal}" Grid.Column="2" HorizontalOptions="Start" Maximum="6" Increment="1" ValueChanged="Stepper_ValueChanged"/>
+                        </Grid>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    <ViewCell>
+                        <StackLayout></StackLayout>
+                    </ViewCell>
+                </TableSection>
+                <TableSection>
+                    
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Delete" TextColor="#ffffff" BackgroundColor="#666666"  Clicked="Delete_Button_Clicked" Margin="5, 0, 5, 0" WidthRequest="90"/>
+                            <Button Grid.Column="1" Text="Save" TextColor="#ffffff" BackgroundColor="#bb0000" Clicked="Save_Button_Clicked" Margin="5, 0, 5, 0" WidthRequest="90"/>
+
                         </Grid>
                     </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>
+       
     </ContentPage.Content>
+    
+
 </ContentPage>

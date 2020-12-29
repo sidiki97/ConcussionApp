@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConcussionApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,9 +12,13 @@ namespace ConcussionApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Symptoms : ContentPage
+
+
     {
-        //private string[] severity = { "None", "Mild", "Moderate", "Severe" };
-        private IDictionary<double, string> severity = new Dictionary<double, string>()
+
+        private SymptomsInfo log = new SymptomsInfo() { Name = "Name" };
+
+        private readonly IDictionary<double, string> severity = new Dictionary<double, string>()
         {
             {0, "None" },
             {1, "Mild" },
@@ -27,8 +32,9 @@ namespace ConcussionApp.Views
         public Symptoms()
         {
             
-
             InitializeComponent();
+
+            
         }
 
         private void Stepper_ValueChanged(object sender, ValueChangedEventArgs e)
@@ -42,8 +48,24 @@ namespace ConcussionApp.Views
 
             Label childElementValue = (Label)(parentElement.Children[1]);
             childElementValue.Text = newVal.ToString();
+            
 
         }
 
+
+        private async void Save_Button_Clicked(object sender, EventArgs e)
+        {
+            var log = (SymptomsInfo)BindingContext;
+            
+            await App.Database.SaveSymptomsLog(log);
+            await Navigation.PopAsync();
+        }
+
+        private async void Delete_Button_Clicked(object sender, EventArgs e)
+        {
+            var del = (SymptomsInfo)BindingContext;
+            await App.Database.DeleteSymptomsEval(del);
+            await Navigation.PopAsync();
+        }
     }
 }
