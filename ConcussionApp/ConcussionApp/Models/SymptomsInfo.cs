@@ -8,7 +8,6 @@ namespace ConcussionApp.Models
     public class SymptomsInfo
 
     {
-        private int score = 0;
 
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }
@@ -42,19 +41,7 @@ namespace ConcussionApp.Models
         public double SleepSoundVal { get; set; }
         public double RingEarVal { get; set; }
         public double NumbnessVal { get; set; }
-
-        public int SymptomScore
-        {
-            get
-            {
-                return score;
-            }
-            set
-            {
-                score = (int)HeadacheValue + (int)HeadPressureVal + (int)NauseaVal + (int)DizzinessVal;
-                
-            }
-        }
+        public double SymptomScore { get; set; }
 
 
       

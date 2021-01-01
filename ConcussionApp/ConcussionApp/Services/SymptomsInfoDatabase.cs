@@ -64,13 +64,17 @@ namespace ConcussionApp.Services
         {
 
             
-            return Database.Table<SymptomsInfo>().OrderBy(i => i.HeadacheValue).ToListAsync();
+            return Database.Table<SymptomsInfo>().OrderBy(i => i.SymptomScore).ToListAsync();
         }
 
         public Task<List<SymptomsInfo>> OrderByScoreDesc()
         {
-            return Database.Table<SymptomsInfo>().OrderByDescending(i => i.HeadacheValue).ToListAsync();
+            return Database.Table<SymptomsInfo>().OrderByDescending(i => i.SymptomScore).ToListAsync();
         }
 
+        public Task<int> DeleteAllPatients()
+        {
+            return Database.DeleteAllAsync<SymptomsInfo>();
+        }
     }
 }

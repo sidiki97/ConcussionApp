@@ -18,6 +18,8 @@ namespace ConcussionApp.Views
 
             NavigationPage.SetHasBackButton(this, false);
 
+            
+
             InitializeComponent();
 
             
@@ -70,6 +72,18 @@ namespace ConcussionApp.Views
         private async void Rearrange_ImageButton_Clicked(object sender, EventArgs e)
         {
             listView.ItemsSource = await App.Database.GetSymptomsInfos();
+        }
+
+        private async void Trash_ImageButton_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Delete All Patients", "Are you sure you want to DELETE ALL patients?", "Yes", "No");
+            if (answer)
+            {
+                await App.Database.DeleteAllPatients();
+                listView.ItemsSource = null;
+            }
+            
+            
         }
     }
 }

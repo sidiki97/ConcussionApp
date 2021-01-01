@@ -14,7 +14,7 @@
                         <DatePicker Date="{Binding BirthDate}" MinimumDate="01/01/1970" TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
                     </ViewCell>
                 </TableSection>
-                <TableSection Title="Current Date" TextColor="#bb0000">
+                <TableSection Title="Date of Evaluation" TextColor="#bb0000">
                     <ViewCell>
                         <DatePicker Date="{Binding Date}" MinimumDate="12/01/2020" TextColor="#bb0000" HorizontalOptions="Fill" Margin="5,0,5,0"></DatePicker>
                     </ViewCell>
@@ -410,7 +410,7 @@
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
-                            <Button Text="Delete" TextColor="#ffffff" BackgroundColor="#666666"  Clicked="Delete_Button_Clicked" Margin="5, 0, 5, 0" WidthRequest="90"/>
+                            <Button Text="Delete" TextColor="#ffffff" BackgroundColor="LightGray"  Clicked="Delete_Button_Clicked" Margin="5, 0, 5, 0" WidthRequest="90"/>
                             <Button Grid.Column="1" Text="Save" TextColor="#ffffff" BackgroundColor="#bb0000" Clicked="Save_Button_Clicked" Margin="5, 0, 5, 0" WidthRequest="90"/>
 
                         </Grid>

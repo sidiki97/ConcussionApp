@@ -16,7 +16,9 @@ namespace ConcussionApp.Views
 
     {
 
-        private SymptomsInfo log = new SymptomsInfo() { Name = "Name" };
+        private double symptomScore = 0;
+
+        private readonly IDictionary<Stepper, double> stepperVals = new Dictionary<Stepper, double>();
 
         private readonly IDictionary<double, string> severity = new Dictionary<double, string>()
         {
@@ -32,6 +34,7 @@ namespace ConcussionApp.Views
         public Symptoms()
         {
             
+            
             InitializeComponent();
 
             
@@ -41,6 +44,8 @@ namespace ConcussionApp.Views
         {
             double newVal = ((Stepper)sender).Value;
 
+            
+            
             Grid parentElement = (Grid)(((Stepper)sender).Parent);
 
             Label childElementSeverity = (Label)(parentElement.Children[0]);
@@ -48,17 +53,39 @@ namespace ConcussionApp.Views
 
             Label childElementValue = (Label)(parentElement.Children[1]);
             childElementValue.Text = newVal.ToString();
-            
+
+            try
+            {
+                stepperVals.Add((Stepper)sender, newVal);
+            }
+            catch(ArgumentException)
+            {
+                stepperVals[(Stepper)sender] = newVal;
+            }
+
 
         }
 
+        private double Add_Symptom_Score()
+        {
+            foreach(double val in stepperVals.Values)
+            {
+                symptomScore += val;
+            }
+
+            return symptomScore;
+        }
 
         private async void Save_Button_Clicked(object sender, EventArgs e)
         {
             var log = (SymptomsInfo)BindingContext;
-            
+            log.SymptomScore = Add_Symptom_Score();
             await App.Database.SaveSymptomsLog(log);
             await Navigation.PopAsync();
+
+            
+
+            
         }
 
         private async void Delete_Button_Clicked(object sender, EventArgs e)

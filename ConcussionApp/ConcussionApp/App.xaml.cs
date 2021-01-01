@@ -15,7 +15,7 @@ namespace ConcussionApp
            
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage())
+            MainPage = new NavigationPage(new Views.SymptomsLog())
             {
                 BarBackgroundColor = Color.FromHex("#bb0000")
             };

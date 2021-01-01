@@ -3,33 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ConcussionApp.Views.SymptomsLog"
              Title="Concussion Care">
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="+" Clicked="ToolbarItem_Clicked">
-            <ToolbarItem.IconImageSource>
-                <OnPlatform x:TypeArguments="ImageSource">
-                    <On Platform="Android" Value="plus.png"/>
-                    
-                </OnPlatform>
-            </ToolbarItem.IconImageSource>
-            
-        </ToolbarItem>
-        
-    </ContentPage.ToolbarItems>
+    
     <StackLayout>
         
-        <Grid Padding="17" HeightRequest="50" BackgroundColor="#bb0000">
+        <Grid Padding="17" HeightRequest="60" BackgroundColor="#bb0000">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
-                <ColumnDefinition Width="*"></ColumnDefinition>
-                <ColumnDefinition Width="1.3*"></ColumnDefinition>
+                <ColumnDefinition Width="1.5*"></ColumnDefinition>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <ImageButton Source="refresh.png" Scale="0.9" BackgroundColor="#bb0000" Clicked="Rearrange_ImageButton_Clicked"/>
-            <Label Grid.Column="1" Text="Symptom" FontSize="Subtitle" TextColor="White" HorizontalTextAlignment="End"/>
-            <Label Grid.Column="2" Text="Evaluations" FontSize="Subtitle" TextColor="White" HorizontalTextAlignment="Start"/>
-            <ImageButton Grid.Column="3" Source="order.png" Scale="0.9" BackgroundColor="#bb0000" Clicked="ImageButton_Clicked"/>
+            <ImageButton Source="refresh.png" BackgroundColor="#bb0000" Clicked="Rearrange_ImageButton_Clicked" HorizontalOptions="Center"/>
+            <Label Grid.Column="1" Text="Symptom Evaluations" FontSize="Medium" TextColor="White" HorizontalTextAlignment="Center"/>
+            
+            <ImageButton Grid.Column="2" Source="order.png" BackgroundColor="#bb0000" Clicked="ImageButton_Clicked" HorizontalOptions="Center"/>
         </Grid>
-        <Grid Margin="20" >
+        <Grid Margin="20" BackgroundColor="LightGray">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="0.5*"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>
@@ -37,14 +25,14 @@
                 <ColumnDefinition Width="*"></ColumnDefinition>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="15"/>
+                <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <Label Text="ID" TextColor="#bb0000" HorizontalTextAlignment="Center"/>
             <Label Grid.Column="1" Text="Patient" TextColor="#bb0000" HorizontalTextAlignment="Center"/>
             <Label Grid.Column="2" Text="Scores" TextColor="#bb0000" HorizontalTextAlignment="Center" />
             <Label Grid.Column="3" Text="Date" TextColor="#bb0000" HorizontalTextAlignment="Center"/>
         </Grid>
-        <ListView x:Name="listView" Margin="20" ItemSelected="ListView_ItemSelected">
+        <ListView x:Name="listView" Margin="20" ItemSelected="ListView_ItemSelected" BackgroundColor="White">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
@@ -65,7 +53,15 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Button Clicked="ToolbarItem_Clicked" Text="New Patient +" BackgroundColor="#bb0000" FontSize="Small" TextColor="#ffffff" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="10"></Button>
+        <Grid BackgroundColor="White">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <ImageButton Source="trash.png" Scale="0.3" BackgroundColor="White" Clicked="Trash_ImageButton_Clicked"/>
+            <ImageButton Grid.Column="2" Source="plus.png" Scale="0.35" Clicked="ToolbarItem_Clicked" BackgroundColor="White"/>
+        </Grid>
     </StackLayout>
     
 </ContentPage>
